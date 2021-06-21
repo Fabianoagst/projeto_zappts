@@ -1,0 +1,22 @@
+@mixin flex-center ($direction: column) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: $direction;
+}
+
+@mixin divisao-tela {
+    width: 50%;
+    height: 100vh;
+}
+
+@mixin mobile{
+    @media screen and (max-width: 425px){
+        @content;  
+    }
+}
+
+@mixin validacao{
+    display: none;
+    color:#f70404;
+}

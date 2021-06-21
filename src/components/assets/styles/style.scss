@@ -1,0 +1,305 @@
+@import 'variables';
+@import 'mixins';
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: muli-regular;
+    max-width: 1500px;
+    max-height: 1000px;
+    @include mobile{
+        max-height: none;
+    }  
+}
+
+.container{
+    @include flex-center(row);
+    @include mobile{
+        @include flex-center();
+    }
+
+    // Área de imagens
+    & .ladoEsquerdo{
+        @include flex-center();
+        @include divisao-tela;
+        background-color: $primary-color;
+        justify-content: unset;
+
+        @include mobile{
+            width: 100%;
+            height: 95vh;
+        }
+
+        & .middle{
+            position: relative;
+            display: flex;
+        }
+
+        & .slideShow{
+            width: 80%;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            @include mobile{
+                width: 95vw;
+                height: 100%;
+                margin-top: 10%;
+            }
+            
+            & .slides{
+                display: flex;
+                width: 100%;
+                height: 100%;
+                
+                & .slide{
+                    display: flex;
+                    flex-direction: column;
+                    transition: 0.6s;
+                    margin-top: 10%;
+                    @include mobile{
+                        align-items: center;
+                    }
+
+                    & img{
+                        width: 550px;
+                        margin: 0 20px;
+                        @include mobile{
+                            width: 100vw;
+                            margin: 0;
+                        }
+                    }
+
+                    & .titulo{
+                        color: $font-color-img;
+                        font-size: 25px;
+                        margin: 3% auto;
+                        @include mobile{
+                            margin: 10px auto;
+                        }
+                    }
+                    & .texto{
+                        color: $font-color-img;
+                        width: 100%;
+                        font-size: 20px;
+                        text-align: center;
+                        @include mobile{
+                            margin: 10px auto;
+                            width: 95vw;
+                        }
+                    }                  
+                }
+
+            }
+            // Navegação manual das imagens
+            & .navigation{
+                display: flex;
+                position: absolute;
+                bottom: 5vh;
+                align-items: center;
+                left: 50%;
+                transform: translateX(-50%);
+                @include mobile{
+                    bottom: 5vh; 
+                }
+        
+                & .bar{
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50px;
+                    border: 2px solid #ffffff;
+                    background-color: white;
+                    margin: 10px;
+                    cursor: pointer;
+                    transition: 0.2s;
+                }
+
+                & .bar:hover{
+                    width: 25px;
+                }
+            }
+
+            & input[name="s"]{
+                position: absolute;
+                visibility: hidden;
+            }
+        }  
+    }
+
+    // Área do login
+    & .ladoDireito{
+        @include flex-center();
+        @include divisao-tela;
+        justify-content: start;
+        font-size: 14px;
+        @include mobile{
+            width: 100%;
+            max-height: none;
+            height: 90vh;
+        }
+
+        & .invision{
+            font-family: metropolis;
+            font-size: 30px;
+            width: 100%;
+            text-align: end;
+            padding-right: 10%;
+            margin-top: 5%;
+        }
+
+        & .bemVindo{
+            font-size: 30px;
+            color: $font-color-1;
+            margin-top: 5%;
+            @include mobile{
+                margin-top: 10%;
+            }
+        }
+
+        & .areaLogin{
+            width: 100%;
+            @include flex-center();
+
+            & form{
+                margin-top: 5%;
+                width: 60%;
+                color: $font-color-1;
+                line-height: 30px;
+                @include mobile{
+                    width: 90vw;
+                }
+
+                & input{
+                    width: 100%;
+                    height: 25px;
+                    border: none;
+                    border-bottom: 1px solid $font-color-1;
+                    padding-left: 1em;
+                    padding-bottom: 1em;
+                    margin-bottom: 10px;
+                }
+
+                & input:focus{
+                    outline: none;
+                }
+
+                & .forgot{
+                    display: flex;
+                    justify-content: flex-end;
+                    text-decoration: none;
+                    right: 0;
+                    color: $font-color-1;
+                }
+                
+                & .areaButton{
+                    @include flex-center();
+                    margin-top: 5%;
+                    
+                    & button{
+                        background-color: $font-color-1;
+                        color: #ffffff;
+                        border: none;
+                        border-radius: 50px;
+                        padding: 10px 5px;
+                        width: 175px;
+                        height: 45px;
+                        margin: auto;
+                        cursor: pointer;
+                    } 
+                }
+            }
+        }
+
+        & .or{
+            width: 40%;
+            border-top: 0.5px solid $font-color-1;
+            @include flex-center();
+            margin-top: 8%;
+            margin-bottom: 5%;
+
+            & span{
+                @include flex-center();
+                background-color: #ffffff;
+                width: 40px;
+                position: relative;
+                top: -10px;
+            }
+        }
+
+        & .btnGoogle{
+            @include flex-center();
+            width: 100%;
+            & button{
+                @include flex-center(row);
+                background-color: $font-color-img;
+                border-radius: 50px;
+                width: 200px;
+                height: 45px;
+                border: none;
+                box-shadow: 0px 3px 6px #00000029;
+                cursor: pointer;
+                & img{
+                    margin-right: 10px;
+                }
+            }
+        } 
+
+        & .createAccount{
+            display: flex;
+            font-size: 14px;
+            color: $font-color-1;
+            margin-top: 10px;
+        
+            & .invisionP{
+                font-family: muli-bold;
+                margin: 0 0 0 5px;
+            }
+
+            & a{
+                color: $primary-color;
+                margin-left: 5px;
+            }
+
+        }
+    }
+}
+
+#campoObrigatorio1, #campoObrigatorio2, #campoObrigatorio3, #emailInvalido{
+    @include validacao;
+}
+
+// Referências da navegação manual
+#s1:checked ~ .s1{
+    margin-left: 0;
+}
+
+#s2:checked ~ .s1{
+    margin-left: -580px;
+}
+
+#s3:checked ~ .s1{
+    margin-left: -1170px;
+}
+
+#s4:checked ~ .s1{
+    margin-left: -1800px;
+}
+
+// Referências da navegação manual MOBILE
+@include mobile{
+    #s1:checked ~ .s1{
+        margin-left: -2%;
+    }
+    
+    #s2:checked ~ .s1{
+        margin-left: -108%;
+    }
+    
+    #s3:checked ~ .s1{
+        margin-left: -214%;
+    }
+    
+    #s4:checked ~ .s1{
+        margin-left: -318%;
+    }
+}
